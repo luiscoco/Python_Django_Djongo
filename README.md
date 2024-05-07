@@ -23,18 +23,19 @@ pip install django djangorestframework djongo drf-yasg
 
 ## 3. Create a New Django Project
 
-Create a new Django project and a new application within it:
+Create a new **Django** project and a new application within it:
 
-bash
-Copy code
+```
 django-admin startproject myproject
 cd myproject
 python manage.py startapp myapp
-4. Configure MongoDB in settings.py
-In your settings.py, configure the database to use Djongo which connects Django to MongoDB:
+```
 
-python
-Copy code
+## 4. Configure MongoDB in settings.py
+
+In your **settings.py**, configure the database to use Djongo which connects **Django** to **MongoDB**:
+
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
@@ -45,10 +46,11 @@ DATABASES = {
         }
     }
 }
-Also, add the created app and other necessary Django extensions to INSTALLED_APPS:
+```
 
-python
-Copy code
+Also, add the created app and other necessary Django extensions to **INSTALLED_APPS**:
+
+```python
 INSTALLED_APPS = [
     ...
     'django.contrib.admin',
@@ -61,11 +63,13 @@ INSTALLED_APPS = [
     'drf_yasg',
     'myapp',
 ]
-5. Create a Model
-In myapp/models.py, define a model:
+```
 
-python
-Copy code
+## 5. Create a Model
+
+In **myapp/models.py**, define a model:
+
+```python
 from djongo import models
 
 class Item(models.Model):
@@ -75,11 +79,13 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
-6. Create Serializers
-In myapp/serializers.py, create serializers for your models:
+```
 
-python
-Copy code
+## 6. Create Serializers
+
+In **myapp/serializers.py**, create serializers for your models:
+
+```python
 from rest_framework import serializers
 from .models import Item
 
@@ -87,11 +93,13 @@ class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
         fields = '__all__'
-7. Create Views
-In myapp/views.py, use Django REST Framework's viewsets for CRUD operations:
+```
 
-python
-Copy code
+## 7. Create Views
+
+In **myapp/views.py**, use **Django REST** Framework's viewsets for CRUD operations:
+
+```python
 from rest_framework import viewsets
 from .models import Item
 from .serializers import ItemSerializer
@@ -99,11 +107,13 @@ from .serializers import ItemSerializer
 class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
-8. Configure URLs
-In myproject/urls.py, set up URL routing for both the application and the Swagger documentation:
+```
 
-python
-Copy code
+## 8. Configure URLs
+
+In **myproject/urls.py**, set up URL routing for both the application and the **Swagger** documentation:
+
+```python
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
@@ -131,14 +141,18 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
-9. Run Migrations and Start the Server
+```
+
+## 9. Run Migrations and Start the Server
+
 Finally, run migrations and start your Django server:
 
-bash
-Copy code
+```
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
-You can now access the Swagger documentation at http://127.0.0.1:8000/swagger/ to interact with your API.
+```
 
-This setup provides you with a Django application configured to perform CRUD operations on MongoDB with OpenAPI documentation provided through Swagger.
+You can now access the **Swagger** documentation at **http://127.0.0.1:8000/swagger/** to interact with your API
+
+This setup provides you with a **Django** application configured to perform **CRUD** operations on **MongoDB** with **OpenAPI** documentation provided through **Swagger**
