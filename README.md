@@ -398,3 +398,33 @@ urlpatterns = [
          cache_timeout=0), name='schema-redoc'),
 ]
 ```
+
+## 10. How to run the application
+
+```
+python manage.py runserver
+```
+
+![image](https://github.com/luiscoco/Python_Django_PyMongo/assets/32194879/85661a9a-18f9-4935-8263-98c3aaa31148)
+
+We navigate to the Swagger endpoints:
+
+http://127.0.0.1:8000/swagger/
+
+![image](https://github.com/luiscoco/Python_Django_PyMongo/assets/32194879/0d27dba7-934e-4b80-959e-b0809f5b6479)
+
+![image](https://github.com/luiscoco/Python_Django_PyMongo/assets/32194879/45632a73-da1d-4c8c-80be-6af5bbe9b945)
+
+We send a **POST** request
+
+![image](https://github.com/luiscoco/Python_Django_PyMongo/assets/32194879/7558b494-3dcd-40a3-b3fc-2cad36535274)
+
+![image](https://github.com/luiscoco/Python_Django_PyMongo/assets/32194879/6d8ca224-254b-4d02-bbb2-ae39b70940f2)
+
+We send a **GET** request
+
+![image](https://github.com/luiscoco/Python_Django_PyMongo/assets/32194879/baf38541-47cc-4a63-9435-d8a9cb88b80a)
+
+![image](https://github.com/luiscoco/Python_Django_PyMongo/assets/32194879/cc4e1ec9-03f8-4421-9a49-fb9a15548b4f)
+
+
